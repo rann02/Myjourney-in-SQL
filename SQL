@@ -305,3 +305,40 @@ select order_id, string_agg(product_id,', ')
 from sales
 group by order_id
 order by order_id;
+
+/* Latihan 13 */
+
+select product_name, length(product_name) as character_num from product order by character_num desc limit 1;
+
+select max(length(product_name)) from product;
+
+select product_name, sub_category, category, (product_name||','||sub_category||','||category) as product_detail from product;
+
+select product_id, substring(product_id for 3), substring(product_id from 5 for 2), substring(product_id from 8) from product;
+
+select string_agg(product_name,',') from product where sub_category in ('Chairs','Tables');
+
+/* CEIL & FLOOR */
+
+select order_line, sales, ceil(sales), floor(sales) from sales;
+
+/* RANDOM */
+/*  a= 10
+    b= 50 */
+    
+select random(), random()*40+10 , floor(random()*40)+10;
+
+/* SETSEED */
+
+select setseed(-1);
+
+select random();
+select random();
+
+/* ROUND */
+
+select order_line, sales, round(sales) from sales order by sales desc;
+
+/* POWER */
+
+select power(age,2), age from customer;
